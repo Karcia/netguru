@@ -12,14 +12,17 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    @user = User.new
+    redirect_to new_user_session_path
   end
 
   def edit
+    redirect_to new_user_session_path and return unless current_user.admin?
   end
 
   def create
+    redirect_to new_user_session_path and return unless current_user.admin?
     self.category = Category.new(category_params)
-
     if category.save
       redirect_to category, notice: 'Category was successfully created.'
     else
@@ -28,6 +31,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    redirect_to new_user_session_path and return unless current_user.admin?
     if category.update(category_params)
       redirect_to category, notice: 'Category was successfully updated.'
     else
