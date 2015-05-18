@@ -9,6 +9,9 @@
     = javascript_include_tag 'application'
 
   %body
+    .flash-messages
+      - flash.each do |name, msg|
+        = content_tag :div, msg, class: name
     %nav.navbar.navbar-default
       .container-fluid
         .navbar-header
