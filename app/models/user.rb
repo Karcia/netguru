@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :products
 
   def admin?
- 	admin == true
+  	admin == true
   end
 
 end
